@@ -1,3 +1,5 @@
+// NPM modules required
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -5,6 +7,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+// Connection to mongoDB database via mongoose
 
 mongoose.connect("mongodb://localhost:27017/todolistDB", {
   useNewUrlParser: true,
@@ -80,6 +84,8 @@ app.post("/work", (req, res) => {
   workItems.push(item);
   res.redirect("/work");
 });
+
+// Connection on Port 3000
 
 app.listen(3000, () => {
   console.log("Server has Started");
